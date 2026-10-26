@@ -1,0 +1,2 @@
+Fichero: alumnos.txt
+Líneas: 1

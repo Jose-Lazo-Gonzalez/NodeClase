@@ -1,0 +1,9 @@
+El orden será A, D true, B, C. El código se ejecuta primero en la pila: sale A, y los callbacks de setTimeout (B) y readFile (C) quedan esperando en la cola. readFileSync ocupa la pila hasta terminar y sale D. Cuando la pila se vacía, el event loop ejecuta B y después C.
+La instrucción bloqueante es fs.readFileSync, ya que mantiene ocupada la pila de llamadas y obliga al programa a esperar hasta terminar de leer el archivo. Por eso se ejecuta D antes que B y C, y el resto de acciones quedan bloqueadas hasta que acaba la lectura.
+Al modificar el codigo el programa no se detiene, ya que gestionar el error dentro de la funcion y al ser asincrona ademas no interrumpe nada de los comandos anteriores. Si no gestionasemos el error tampoco se detendria pero no nos dariamos cuenta del error.
+Al poner las dos ultimas lineas, solo funciona console.log(process.version) que nos muestra la version de node que estamos utilizando, sin embargo, console.log(document.title) falla, ya que buca en el DOM de la pagina, y al estar usando node, no contamos con una pagina donde referenciar el DOM.
+
+Ejercicio 2
+
+Es un ejemplo de callback hell porque cada operacion depende de la anterior entonces para hacerlas sincrona, usa el metodo de anidarlas unas dentro de otra. Creciendo asi en forma de piramide horizontal y dando problemas de legibilidad y escalabilidad a largo plazo (en caso de que queramos ampliar el codigo)
+Al cambiar el nombre del archivo y ejecutar cada codigo podemos observar que en las 3 se gestiona el error, pero mientras con las promesas solo haca falta gestionarlo en los catch. En la version de los callback hell hay que gestionarlo 3 veces, una por cada proceso anidado.
