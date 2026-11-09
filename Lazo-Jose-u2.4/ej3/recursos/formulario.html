@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Libro de visitas</title>
+</head>
+<body>
+  <h1>Libro de visitas</h1>
+  <form method="POST" action="/firmar">
+    <p><label>Nombre: <input name="nombre"></label></p>
+    <p><label>Mensaje:<br>
+      <textarea name="mensaje" rows="5" cols="40"></textarea></label></p>
+    <button type="submit">Firmar</button>
+  </form>
+  <p><a href="/firmas">Ver todas las firmas (JSON)</a></p>
+</body>
+</html>
