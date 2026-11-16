@@ -1,0 +1,31 @@
+<%- include('partials/cabecera') %>
+  <h1><%= titulo %></h1>
+  <p>Total de libros: <%= libros.length %></p>
+  <% if (libros.length > 0) { %>
+    <table>
+      <tr>
+        <th>Título</th>
+        <th>Autor</th>
+        <th>Año</th>
+        <th>Estado</th>
+      </tr>
+      <% libros.forEach(libro => { %>
+        <tr>
+          <td>
+            <%= libro.titulo %>
+            <% if (libro.anio < 2000) { %>(clásico)<% } %>
+          </td>
+          <td><%= libro.autor %></td>
+          <td><%= libro.anio %></td>
+          <% if (libro.disponible) { %>
+            <td class="disponible">Disponible</td>
+          <% } else { %>
+            <td class="prestado">Prestado</td>
+          <% } %>
+        </tr>
+      <% }) %>
+    </table>
+  <% } else { %>
+    <p>No hay libros que mostrar</p>
+  <% } %>
+<%- include('partials/pie') %>
