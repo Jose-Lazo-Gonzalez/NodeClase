@@ -1,0 +1,29 @@
+<%- include('partials/cabecera') %>
+  <h1><%= titulo %></h1>
+
+  <% if (arrayJuegos.length > 0) { %>
+
+  <p class="fw-bold">Total: <%= arrayJuegos.length %> juegos</p>
+  
+    <table class="table">
+      <thead class="table-dark">
+        <tr>
+          <th>Título</th>
+          <th>Plataforma</th>
+          <th>Precio</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% arrayJuegos.forEach(juego => { %>
+          <tr>
+            <td><%= juego.titulo %></td>
+            <td><%= juego.plataforma %></td>
+            <td><%= juego.precio.toFixed(2) %> €</td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  <% } else { %>
+  <div class="alert alert-info">No hay juegos en el catálogo</div>
+<% } %>
+<%- include('partials/pie') %>
